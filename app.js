@@ -20,19 +20,20 @@ const search = require('./routes/search')
 //Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/users', users);
-app.use('/books', books);
-app.use('/search', search);
-app.use('/issuedbooks', issuedBooks);
+app.use('/api/users', users);
+app.use('/api/books', books);
+app.use('/api/search', search);
+app.use('/api/issuedbooks', issuedBooks);
 
 // Set Static Folderr
 app.use(express.static(`./public`));
 
 
 // Index Route
-// app.get('/*', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/public/index.html'));
-//     });
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
+    });
+    
 app.get('/',(req,res)=>{
     res.send('Invalid endpoint')
 })
